@@ -139,12 +139,12 @@ export async function getController(req: Request, res: Response): Promise<Respon
 
 //deleteController/////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-export async function deleteController(req: Request, res: Response): Promise<Response> {
+export async function deleteController(req: Request, res: Response):        Promise<Response> {
     const { ObjectId } = require("mongodb");
     const id = ObjectId(req.params.id);
     //await Opinion.deleteMany({ imageid: id });
     const Curseww = await Task.findByIdAndRemove(req.params.id) as ITask;
-    //const Curse = await Curse.findByIdAndRemove(id) as ITask;
+      //const Curse = await Curse.findByIdAndRemove(id) as ITask;
 
     if (Curseww) {
         try {
