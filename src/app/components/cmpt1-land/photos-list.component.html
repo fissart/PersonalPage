@@ -32,6 +32,7 @@ File
 
 </ng-template>
 
+
 <!--
 New
 -->
@@ -162,11 +163,11 @@ New refresh
     <div class="jumbotron col-md-12 p-1">
       <h1 class="display-4 p-1"> Hola mundo!</h1>
       <p class="lead">
-        Artista plástica y gestora cultural
+        Docente esfapa
       </p>
       <hr class="my-4">
       <p>
-        Egresé de la Especialidad de Pintura en la Escuela Nacional Superior Autónoma de Bellas Artes del Perú 2004. Complementé mi carrera como artista plástico con un bachillerato en Arte en la Unidad de Post grado de la Facultad de letras y ciencias Humanas de la UNMSM.
+        wwwwwwwwwwww.
       </p>
 
         <a class="btn btn-light" href="/Cmpt14MVComponent" role="button">Saber más</a>
@@ -194,23 +195,23 @@ New refresh
                   <ng-template #thenBlock>
                     <button *ngIf="rol=='1'" class="btn btn-success shadow-none" (click)="newsemergent( $any(photo)._id, 'true')">
                       <mat-icon svgIcon="go" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                      Show
+                      Mostrar
                     </button>
                   </ng-template>
                   <ng-template  #elseBlock>
                     <button *ngIf="rol=='1'" class="btn btn-info shadow-none" (click)="newsemergent( $any(photo)._id, 'false')">
                     <mat-icon svgIcon="getout" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                    Hide
+                    Esconder
                   </button>
                   </ng-template>
 
                   <button *ngIf="rol=='1'" class="btn btn-warning shadow-none" (click)="deletenews( $any(photo)._id)">
                       <mat-icon svgIcon="go" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                      Delete
+                      Borrar
                   </button>
                   <button *ngIf="rol=='1'" class="btn btn-primary shadow-none" (click)="open2(www, photo._id, photo.title, photo.description, photo.img, photo.show)">
                       <mat-icon svgIcon="go" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                      Edit
+                      Editar
                   </button>
               </div>
             </div>
