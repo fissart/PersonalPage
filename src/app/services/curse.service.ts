@@ -49,7 +49,7 @@ export class CurseService {
       filecurseupdate(id: string, title: string, description: string, blogspot: string, youtube: string, instagram: string, whatsapp: string, facebook: string) {
           return this.http.put(`${environment.apiURL}/api/FilecurseTeacher/${id}`, {'title':title, 'description': description, blogspot, youtube, instagram, whatsapp, facebook });
     }
-
+ 
     filecurseupdatefile(id: string, photo:File) {
           const fd = new FormData();
           fd.append('image', photo);

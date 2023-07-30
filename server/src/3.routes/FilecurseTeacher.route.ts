@@ -17,3 +17,4 @@ router.route('/update/:id')
     .put(upload.single('image'), FileupdateController);
 
 export default router;
+ 

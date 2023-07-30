@@ -97,7 +97,7 @@
 <div class="row justify-content-center">
   <div class="p-1 col-md-4" *ngFor="let doc of data index as i">
     <div class="bg-light bounce p-2">
-          <div class="h3">{{doc.title}}</div>
+          <div class="text-center">{{doc.title}}</div>
         <div *ngIf="doc.file" class="p-0 text-center">
         <img *ngIf="doc.file.split('.').pop()=='png'||doc.file.split('.').pop()=='jpg'||doc.file.split('.').pop()=='jpeg'||doc.file.split('.').pop()=='svg'||doc.file.split('.').pop()=='webp'" [src]="apiUrl+'/'+ doc.file" class="img-fluid w-70" (error)="onImgError($event)">
         </div>
