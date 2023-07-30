@@ -11,6 +11,8 @@ export const environment = {
 };
 /*
 
+
+       
 db.users.updateMany({}, {"$set": {"filosophy": filosophy}})
 
 db.curses.updateMany({}, {"$set": {"show": "false"}});
