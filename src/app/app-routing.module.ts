@@ -12,24 +12,23 @@ import { Cmpt19EDUCACIONComponent } from './components/cmpt19-educacion/cmpt19-e
 import { Cmpt21APGComponent } from './components/cmpt21-ap-g/cmpt21-ap-g.component';
 import { Cmpt20APPComponent } from './components/cmpt20-ap-p/cmpt20-ap-p.component';
 import { Cmpt22APEComponent } from './components/cmpt22-ap-e/cmpt22-ap-e.component';
-import { Cmpt23TESISComponent } from './components/cmpt23-tesis/cmpt23-tesis.component'; 
+import { Cmpt23TESISComponent } from './components/cmpt23-tesis/cmpt23-tesis.component';
 import { Cmpt25ADMISIONComponent } from './components/cmpt25-admision/cmpt25-admision.component';
- 
+
 
 const routes: Routes = [
   { path: 'Cmpt14MVComponent', component: Cmpt14MVComponent },
- 
-  
+
+
   { path: 'projects', component: Cmpt19EDUCACIONComponent },
   { path: 'Cmpt21APGComponent/:id', component: Cmpt21APGComponent },
   { path: 'sub_projects/:id', component: Cmpt20APPComponent },
   { path: 'sub_expositions/:id', component: Cmpt22APEComponent },
   { path: 'expositions', component: Cmpt23TESISComponent },
- 
   { path: 'texts', component: Cmpt25ADMISIONComponent },
 
- 
-   
+
+
   {
     path: 'user/:id',
     component: UserPreviewComponent
@@ -46,13 +45,13 @@ const routes: Routes = [
     path: 'registro',
     component: UserComponent
   },
-  
- 
+
+
   {
     path: '',
     component: PhotosListComponent
   },
-   
+
 ];
 
 @NgModule({

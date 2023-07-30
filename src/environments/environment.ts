@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   title: 'Local Environment Heading',
-  apiURL: 'http://localhost:8000'
+  //apiURL: 'http://localhost:8000'
   //apiURL:  'https://nancyviza.tk:8000'
+  apiURL:  'http://169.197.183.212:8000'
 };
 /*
 

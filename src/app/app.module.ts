@@ -28,7 +28,7 @@ import { NgxHeadroomModule } from 'ngx-headroom';
 import { MatIconModule } from '@angular/material/icon';
                             
 import { NgxDocViewerModule } from "ngx-doc-viewer";
-import { FileComponent } from './components/cmpt13-file/file.component';
+//import { FileComponent } from './components/cmpt13-file/file.component';
 import { Cmpt14MVComponent } from './components/cmpt14-mv/cmpt14-mv.component';
 import { Cmpt19EDUCACIONComponent } from './components/cmpt19-educacion/cmpt19-educacion.component';
 import { Cmpt21APGComponent } from './components/cmpt21-ap-g/cmpt21-ap-g.component';
@@ -38,7 +38,7 @@ import { Cmpt23TESISComponent } from './components/cmpt23-tesis/cmpt23-tesis.com
  
 import { Cmpt25ADMISIONComponent } from './components/cmpt25-admision/cmpt25-admision.component';
  
- 
+  
 
 @NgModule({
     declarations: [
@@ -51,7 +51,7 @@ import { Cmpt25ADMISIONComponent } from './components/cmpt25-admision/cmpt25-adm
   
         UserPreviewComponent,
  
-        FileComponent,
+        //FileComponent,
         Cmpt14MVComponent,
            Cmpt19EDUCACIONComponent,
         Cmpt21APGComponent,
