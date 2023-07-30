@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
- import { PhotosListComponent } from './components/cmpt1-land/photos-list.component'
+import { PhotosListComponent } from './components/cmpt1-land/photos-list.component'
 import { LoginComponent } from './components/cmpt5-login/login.component';
 import { UserPreviewComponent } from './components/cmpt4-user-preview/user-preview.component';
 import { UserComponent } from './components/cmpt3-user-register/user.component';

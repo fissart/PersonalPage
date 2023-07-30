@@ -1,0 +1,175 @@
+<div Ngxheadroom   [options]="options" class="fixed-navbar">
+    <app-navigation></app-navigation>
+</div>
+<div class="height"></div>
+<!--sub_exposiciones-->
+<ng-template #ww let-modal>
+  <form class="container p-3" (submit)="updatenews(_title, description)">
+      <div class="row p-0">
+        <div class="form-group mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Título</label>
+            <input type="text" class="form-control" placeholder="Photo's Title" #_title  [value]="title">
+        </div>
+          <div class="form-group mb-3 ">
+              <label for="exampleFormControlInput1" class="form-label">Descripción</label>
+              <div class="row mx-1">
+                  <div class="col-md-5 p-0">
+                      <textarea rows="5" cols="0" class="variable-textarea form-control" [(ngModel)]="markdown" [ngModelOptions]="{standalone:true}" [value]="description" #description></textarea>
+                  </div>
+                   <div class="form-group mb-3 col-md-7">
+                     <ng-katex-html *ngIf ="markdown" [html]="markdown"></ng-katex-html>
+                   </div>
+              </div>
+          </div>
+      </div>
+      <input type="file" class="d-none" (change)="capturandoFile($event)" #photoInput>
+      <div  class="text-center">
+      <img [src]="photoSelected || apiUrl+'/'+ img" class="m-auto w-25 cursorpoint img-fluid" (error)="onImgError($event)" alt="No image" (click)="photoInput.click()">
+    </div>
+
+      <div *ngIf="photoSelected && name" class="bg-light text-center border rounded">
+          {{name}}
+      </div>
+      <ngx-extended-pdf-viewer *ngIf="photoSelected && type=='application/pdf'"
+      [src]="photoSelected"
+      [height]="'1000px'"
+      [useBrowserLocale]="false"
+      [textLayer]="true"
+      [showHandToolButton]="true">
+      </ngx-extended-pdf-viewer>
+
+      <ngx-extended-pdf-viewer *ngIf="img && !photoSelected && img.split('.').pop()=='pdf'"
+      [src]="apiUrl+'/'+ img"
+      [height]="'800px'"
+      [useBrowserLocale]="false"
+      [textLayer]="true"
+      [showHandToolButton]="false">
+      </ngx-extended-pdf-viewer>
+  <mat-progress-bar *ngIf="value > 0 && photoSelected" color="accent" mode="determinate" [value]="value"></mat-progress-bar>
+  {{ loading=='false' ? 'Cargando '+value+'%': null}}
+      <button class="btn d-none" [disabled]="loading" #www></button>
+  </form>
+    <div class="modal-footer">
+        <button class="btn btn-info mt-1" [disabled]="loading" (click)="www.click()">{{ loading=='false' ? 'Cargando': 'Actualizar'}}</button>
+        <button class="btn btn-info shadow-none" (click)="modal.close()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <ng-template #w let-modal>
+    <div class="modal-header h3">
+        {{title}}
+    </div>
+    <div class="modal-body bg-light">
+        <ng-katex-html *ngIf="markdown" [html]="markdown"></ng-katex-html>
+        <div *ngIf="img">
+        <img *ngIf="img.split('.').pop()=='png'||img.split('.').pop()=='jpg'||img.split('.').pop()=='jpeg'||img.split('.').pop()=='svg'||img.split('.').pop()=='webp'" [src]="apiUrl+'/'+ img" class="img-fluid w-100" (error)="onImgError($event)">
+
+        <ngx-doc-viewer *ngIf="img.split('.').pop()=='doc'"
+        [url]="apiUrl+'/'+ img"
+        viewer="google"
+        style="width:100%;height:100vh;"
+        ></ngx-doc-viewer>
+        <ngx-doc-viewer *ngIf="img.split('.').pop()=='docx' || img.split('.').pop()=='pptx'|| img.split('.').pop()=='ptx' || img.split('.').pop()=='xlsx'|| img.split('.').pop()=='xls'"
+        [url]="apiUrl+'/'+ img"
+        viewer="google"
+        style="width:100%;height:800px;"
+        ></ngx-doc-viewer>
+        <ngx-extended-pdf-viewer    *ngIf="img.split('.').pop()=='pdf'"
+         [src]="apiUrl+'/'+ img"
+         [height]="'500px'"
+        ></ngx-extended-pdf-viewer>
+      </div>
+      </div>
+
+      <div class="modal-footer">
+          <button class="btn btn-info shadow-none" (click)="modal.close()">Cerrar</button>
+      </div>
+    </ng-template>
+
+
+
+<div class='container'>
+  <div class="row d-flex justify-content-center align-items-center">
+  <button *ngIf="rol=='5' || rol=='1'" class="btn btn-info shadow-none mt-2  rounded-0" (click)="create('folder')">Crear folder</button>
+  </div>
+
+<div class="row my-3 justify-content-center">
+  <ng-container *ngFor="let doc of data index as i">
+      <div *ngIf="doc.subtype=='folder'" class="rounded p-2 col-md-6">
+        <div class="bg-info bounce" [ngStyle]="{background:'url('+apiUrl+'/'+doc.file+')', 'background-size': '50000px 50000px'}">
+          <div  class="p-1" style="background: rgba(250,250,250,0.3);">
+        <a class="btn w-100 p-0 text-light" [href]="'/sub_expositions/' + doc._id" style='text-decoration:none'>
+          <div class="text-uppercase h5 text-center my-0">{{doc.title}}</div>
+          <div *ngIf="doc.file" class="p-0">
+            <img *ngIf="doc.file.split('.').pop()=='png'||doc.file.split('.').pop()=='JPG'||doc.file.split('.').pop()=='jpg'||doc.file.split('.').pop()=='jpeg'||doc.file.split('.').pop()=='svg'||doc.file.split('.').pop()=='webp'" [src]="apiUrl+'/'+ doc.file" class="img-fluid w-70" (error)="onImgError($event)">
+          </div>
+          <div style="text-align: justify">
+          <ng-katex-html *ngIf="doc.description" [html]="doc.description"></ng-katex-html>
+          </div>
+</a>
+        <div  class="p-0 text-center btn-group d-flex">
+            <button *ngIf="rol=='5' || rol=='1'" class="btn btn-danger" (click)="delete(doc._id)">Eliminar</button>
+            <button *ngIf="rol=='5' || rol=='1'" class="btn btn-light" (click)="open1(ww, doc._id, doc.title, doc.description, doc.file)">Editar
+            </button>
+            <button *ngIf="rol=='5' || rol=='1'" class="btn btn-warning " (click)="open2(w, doc._id, doc.title, doc.description, doc.file)">Archivo</button>
+           </div>
+         </div>
+       </div>
+      </div>
+  </ng-container>
+</div>
+
+<div class="row d-flex justify-content-center align-items-center">
+<button *ngIf="rol=='5' || rol=='1'" class="btn btn-warning shadow-none mt-2  rounded-0" (click)="create('imagen')">Crear imagen</button>
+</div>
+
+<div class="row my-3 justify-content-center">
+  <ng-container *ngFor="let doc of data index as i">
+      <div *ngIf="doc.subtype=='imagen'" class="rounded p-2 col-md-6">
+        <div class="bg-info bounce" [ngStyle]="{background:'url('+apiUrl+'/'+doc.file+')', 'background-size': '50000px 50000px'}">
+          <div  class="p-1" style="background: rgba(250,250,250,0.3);">
+          <a class="btn p-0 w-100" (click)="open2(w, doc._id, doc.title, doc.description, doc.file)">
+          <div class="text-uppercase h5 text-center my-0">{{doc.title}}</div>
+          <div *ngIf="doc.file" class="p-0">
+            <img *ngIf="doc.file.split('.').pop()=='png'||doc.file.split('.').pop()=='JPG'||doc.file.split('.').pop()=='jpg'||doc.file.split('.').pop()=='jpeg'||doc.file.split('.').pop()=='svg'||doc.file.split('.').pop()=='webp'" [src]="apiUrl+'/'+ doc.file" class="img-fluid w-70" (error)="onImgError($event)">
+          </div>
+          <div style="text-align: justify">
+          <ng-katex-html *ngIf="doc.description" [html]="doc.description"></ng-katex-html>
+          </div>
+          </a>
+          <div  class="p-0 text-center btn-group d-flex">
+            <button *ngIf="rol=='5' || rol=='1'" class="btn btn-danger" (click)="delete(doc._id)">Eliminar</button>
+            <button *ngIf="rol=='5' || rol=='1'" class="btn btn-light" (click)="open1(ww, doc._id, doc.title, doc.description, doc.file)">Editar
+            </button>
+           </div>
+         </div>
+         </div>
+      </div>
+  </ng-container>
+</div>
+
+<div class="row d-flex justify-content-center align-items-center">
+<button *ngIf="rol=='5' || rol=='1'" class="btn btn-success shadow-none mt-2  rounded-0" (click)="create('documento')">Crear documento</button>
+</div>
+
+<div class="row my-3 justify-content-center">
+  <ng-container *ngFor="let doc of data index as i">
+      <div *ngIf="doc.subtype=='documento'" class="rounded p-2 col-md-6" [ngStyle]="{background:'url('+apiUrl+'/'+doc.file+')', 'background-size': '50000px 50000px'}">
+        <div class="bounce p-1 bg-success">
+          <a class="btn w-100 text-light" (click)="open2(w, doc._id, doc.title, doc.description, doc.file)">
+          <div class="text-uppercase h5 text-center my-0">{{doc.title}}</div>
+          <div style="text-align: justify">
+          <ng-katex-html *ngIf="doc.description" [html]="doc.description"></ng-katex-html>
+          </div>
+        </a>
+          <div  class="p-0 text-center btn-group d-flex">
+            <button *ngIf="rol=='5' || rol=='1'" class="btn btn-danger" (click)="delete(doc._id)">Eliminar</button>
+            <button *ngIf="rol=='5' || rol=='1'" class="btn btn-light" (click)="open1(ww, doc._id, doc.title, doc.description, doc.file)">Editar
+            </button>
+           </div>
+
+         </div>
+      </div>
+  </ng-container>
+</div>
+</div>

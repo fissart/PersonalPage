@@ -18,15 +18,15 @@ import { LoginComponent } from './components/cmpt5-login/login.component';
 import { LandComponent } from "./components/cmpt2-users/land.component";
 import { QuillModule } from 'ngx-quill'
 
-
-
+               
+                                                                                                                
 import { UserPreviewComponent } from './components/cmpt4-user-preview/user-preview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { SwiperModule } from 'swiper/angular';
 import { NgxHeadroomModule } from 'ngx-headroom';
 import { MatIconModule } from '@angular/material/icon';
- 
+                            
 import { NgxDocViewerModule } from "ngx-doc-viewer";
 import { FileComponent } from './components/cmpt13-file/file.component';
 import { Cmpt14MVComponent } from './components/cmpt14-mv/cmpt14-mv.component';
