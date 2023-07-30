@@ -9,7 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
-import { NgxVideoListPlayerModule } from 'ngx-video-list-player';
 import { KatexModule } from 'ng-katex';
 import { NavigationComponent } from './components/cmpt2-navigation/navigation.component';
 import { PhotosListComponent } from './components/cmpt1-land/photos-list.component';
@@ -152,7 +151,6 @@ import { CmptStoreEsfaComponent } from './components/cmpt-store-esfa/cmpt-store-
  //),
     NgxYoutubePlayerModule.forRoot(),
 		MatProgressBarModule,
-		NgxVideoListPlayerModule,
 		BrowserAnimationsModule,
         NgxExtendedPdfViewerModule
 	],

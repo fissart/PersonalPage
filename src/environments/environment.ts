@@ -71,41 +71,34 @@ db.averages.aggregate([
 ]).pretty()
 
 
-db.averages.aggregate([
-    {
-        $match: {
-          $and: [
-               {ciclo: "I"},
-               {especialidad: "ED"}
-           ]
-        },
-    },
+db.users.aggregate([
     {$group : {
-      _id:{user:"$title"}, estudiantes:{$sum:1},
-      Puntaje: { $sum: { $multiply: [ 3, {$toInt:'$nota'} ] } },
+      _id:{rol:"$rol"}, total:{$sum:1},
     }},
     {
           $lookup: {
-            from: "averages",
-            let: { www: "$_id.user" },
+            from: "users",
+            let: { www: "$_id.rol" },
             pipeline: [
-               { $match: { $expr: { $eq: ["$title", "$$www"] } } },
-               {
+               { $match: { $expr: { $eq: ["$rol", "$$www"] } } },
+               {$group : {
+               _id:{mencion:"$mencion"}, total:{$sum:1},
+               }
+              },
+              {
                      $lookup: {
                        from: "users",
-                       let: { www: "$user" },
+                       let: { www: "$_id.mencion" },
                        pipeline: [
-                          { $match: { $expr: { $and: [{ $eq: ["$_id", "$$www"] }, { $eq: ["$especialidad",  "ED"] },] } }},
+                          { $match: { $expr: { $eq: ["$mencion", "$$www"] }}},
                        ],
                        as: "cursew",
                      },
                },
-
             ],
             as: "cursew",
           },
-    },
-    {$sort:{"Puntaje":-1}}
+    }
 ]).pretty()
 
 
@@ -137,6 +130,36 @@ db.example.insertMany(
 { "_id" : 6, "city" : "Portland, OR", "qty" : 408 },
 { "_id" : 7, "city" : "Sacramento, CA", "qty" : 574 },
 )]
+
+db.roles.insertMany(
+  [
+    {rol:"1"},
+    {rol:"2"},
+    {rol:"3"},
+    {rol:"4"},
+    {rol:"5"},
+    {rol:""},
+  ]
+)
+
+
+db.ciclos.insertMany(
+  [
+    {rol:"I"},
+    {rol:"II"},
+    {rol:"III"},
+    {rol:"IV"},
+    {rol:"V"},
+    {rol:"VI"},
+    {rol:"VII"},
+    {rol:"VIII"},
+    {rol:"IX"},
+    {rol:"X"},
+  ]
+)
+
+
+
 db.example.aggregate([
   { $project : { city_state : { $split: ["$city", ", "] }, qty : 1 } },
   { $unwind : "$city_state" },
@@ -372,8 +395,8 @@ db.cursesources.insertMany(
      { "_id" : { "day" : 1, "year" : 2014 }, "totalAmount" : 20, "count" : 1 }
      db.wwws.insertMany(
 [
-	{name:"75869653",email: "75869653@w",  size: { h: 14, w: 21, uom: "cm" }, password:"75869653",rol:"3",foto:"uploads/cf0802fd-d079-4eb4-bc60-e0d31ae7c939.jpg",createdAt:ISODate("2021-08-16T20:28:22.674Z"),updateAt:ISODate("2021-08-16T20:28:22.674Z")},
-	{name:"75869653",email: "75869653@w", password:"75869653",rol:"3",foto:"uploads/cf0802fd-d079-4eb4-bc60-e0d31ae7c939.jpg",createdAt:ISODate("2021-08-16T20:28:22.674Z"),updateAt:ISODate("2021-08-16T20:28:22.674Z")}])
+  {name:"75869653",email: "75869653@w",  size: { h: 14, w: 21, uom: "cm" }, password:"75869653",rol:"3",foto:"uploads/cf0802fd-d079-4eb4-bc60-e0d31ae7c939.jpg",createdAt:ISODate("2021-08-16T20:28:22.674Z"),updateAt:ISODate("2021-08-16T20:28:22.674Z")},
+  {name:"75869653",email: "75869653@w", password:"75869653",rol:"3",foto:"uploads/cf0802fd-d079-4eb4-bc60-e0d31ae7c939.jpg",createdAt:ISODate("2021-08-16T20:28:22.674Z"),updateAt:ISODate("2021-08-16T20:28:22.674Z")}])
 -//Actualizar e ingresar documentos nested
 db.users.update( {_id: ObjectId('623cd42f0ad9cfb39677310e')}, { '$set': {"size.h" : 'www'} });
 //Actualizar e ingresar documentos nuevos
@@ -420,5 +443,29 @@ mongorestore --db namedatabase --collection namecollectionqueenviar w1.json/fisa
 
 
 
+db.averages.updateMany({codigo:"ABCOM101", ciclo:"I", year:"2023",mencion:"E"},{$set:{codigo:"FGCOM101"}})
+db.averages.updateMany({codigo:"AFPDI107", ciclo:"I", year:"2023",mencion:"E"},{$set:{codigo:"FEDIB115"}})
+db.averages.updateMany({codigo:"ABMES103", ciclo:"I", year:"2023",mencion:"E"},{$set:{codigo:"FGMES105"}})
+db.averages.updateMany({codigo:"AFPDI211", ciclo:"III", year:"2023",mencion:"E"},{$set:{codigo:"FEDIB215"}})
+db.averages.updateMany({codigo:"CAHAR401", ciclo:"V", year:"2023",mencion:"E"},{$set:{codigo:"CAHAR305"}})
+db.averages.updateMany({codigo:"AFPDI313", ciclo:"V", year:"2023",mencion:"E"},{$set:{codigo:"FEDIB313"}})
+
+db.averages.updateMany({codigo:"CAHAR401", ciclo:"V", year:"2023",mencion:"G"},{$set:{codigo:"CAHAR305"}})
+db.averages.updateMany({codigo:"AFPDI313", ciclo:"V", year:"2023",mencion:"G"},{$set:{codigo:"FEDIB313"}})
+db.averages.updateMany({codigo:"AFPDI211", ciclo:"III", year:"2023",mencion:"G"},{$set:{codigo:"FEDIB215"}})
+db.averages.updateMany({codigo:"ABCOM101", ciclo:"I", year:"2023",mencion:"G"},{$set:{codigo:"FGCOM101"}})
+db.averages.updateMany({codigo:"ABMES103", ciclo:"I", year:"2023",mencion:"G"},{$set:{codigo:"FGMES105"}})
+db.averages.updateMany({codigo:"AFPDI107", ciclo:"I", year:"2023",mencion:"G"},{$set:{codigo:"FEDIB115"}})
+
+
+db.averages.updateMany({codigo:"ABCOM101", ciclo:"I", year:"2023",mencion:"P"},{$set:{codigo:"FGCOM101"}})
+db.averages.updateMany({codigo:"ABMES103", ciclo:"I", year:"2023",mencion:"P"},{$set:{codigo:"FGMES105"}})
+db.averages.updateMany({codigo:"AFPDI107", ciclo:"I", year:"2023",mencion:"P"},{$set:{codigo:"FEDIB115"}})
+db.averages.updateMany({codigo:"AFPDI211", ciclo:"III", year:"2023",mencion:"P"},{$set:{codigo:"FEDIB215"}})
+db.averages.updateMany({codigo:"CAHAR401", ciclo:"V", year:"2023",mencion:"P"},{$set:{codigo:"CAHAR305"}})
+db.averages.updateMany({codigo:"AFPDI313", ciclo:"V", year:"2023",mencion:"P"},{$set:{codigo:"FEDIB313"}})
+
 
 */
+
+

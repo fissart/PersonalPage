@@ -14,7 +14,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxHeadroomOption } from 'ngx-headroom';
 import SwiperCore, { EffectCoverflow, EffectFade, EffectFlip, Virtual, SwiperOptions , Swiper, Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
-import { IVideoConfig } from "ngx-video-list-player";
+
 SwiperCore.use([EffectCoverflow, EffectFade, EffectFlip, Virtual, Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 
@@ -45,26 +45,6 @@ export class PhotosListComponent implements OnInit, AfterViewInit {
     }
       };
 
-      configg: IVideoConfig = {
-              sources: [
-              {
-                src: "https://www.youtube.com/watch?v=A3cGMNxRNJ0", //e.g.: https://www.youtube.com/watch?v=xxxxxxxx
-                videoName: "{video1_name}",
-                artist: "{videoW_artist}",
-                isYoutubeVideo: true
-              },
-              {
-                  src: "{https://www.youtube.com/watch?v=A3cGMNxRNJ0}",
-                  videoName: "{video1_name}",
-                  artist: "{video1_artist}"
-              },
-              //In case of Youtube
-              {
-                  src: "{video2_src}",
-                  videoName: "{video2_name}",
-                  artist: "{video2_artist}"
-              }]
-          };
 
 public text: string = "";
 public year: number = 0;
@@ -535,7 +515,7 @@ getFirstAverages(ciclo:HTMLInputElement, mension:HTMLInputElement, year:HTMLInpu
     ngOnInit() {
 
       this.year = new Date().getFullYear();
-      this.Tw.setTitle('Inicio NANCY VIZA');
+      this.Tw.setTitle('Inicio Marcelino Efrain Taipe Carbajal');
 
       this.usser();
       this.gets_news();
