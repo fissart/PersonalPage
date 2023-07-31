@@ -81,7 +81,7 @@
     }
 
     ngOnInit(): void {
-      this.Tw.setTitle('Textos NANCY VIZA');
+      this.Tw.setTitle('Textos AEPA');
     this.router.params.subscribe(params => {
     console.log(localStorage.getItem('idcurso') || "" )
     this.gets()

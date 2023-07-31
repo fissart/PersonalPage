@@ -98,7 +98,7 @@
   <div class="bg-info" *ngFor="let doc of data index as i">
     <div class="row bg-light p-2 justify-content-center align-items-center ">
         <div *ngIf="doc.file" class="p-0 text-center col-md-6">
-          <span class="h3">{{doc.title}}</span>
+          <span class="h3 text-uppercase">{{doc.title}}</span>
           <img *ngIf="doc.file.split('.').pop()=='png'||doc.file.split('.').pop()=='jpg'||doc.file.split('.').pop()=='jpeg'||doc.file.split('.').pop()=='svg'||doc.file.split('.').pop()=='webp'" [src]="apiUrl+'/'+ doc.file" class="img-fluid w-100" (error)="onImgError($event)" (loading)="onImgError($event)">
         </div>
         <div class=" col-md-6" style="padding-left:1em;text-align: justify">

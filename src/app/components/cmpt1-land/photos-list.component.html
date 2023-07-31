@@ -246,7 +246,7 @@ New refresh
       <div *ngIf="file.type=='image'" class="rounded p-1 col-md-6 col-lg-4 col-xl-4">
         <div class="p-0" [ngStyle]="{background:'url('+apiURL+'/'+file.img+')', 'background-size': '50000px 50000px'}">
           <div class="p-2" [ngStyle]="{background:'rgba(210,210,210, 0.5)'}">
-            <div class="h5 text-center">{{file.title}}</div>
+            <div class="h5 text-center text-uppercase">{{file.title}}</div>
             <button class="btn p-0" (click)="openfile(filew, file.img)">
               <img [src]="apiURL+'/'+file.img" class="img-card-top imgcurse" (error)="onImgError($event)">
             </button>
@@ -280,7 +280,7 @@ New refresh
     <ng-container *ngFor="let file of ussser index as i">
       <div *ngIf="file.type=='videosyoutube'" class="rounded p-1 col-md-6 col-lg-4 col-xl-4">
         <div class="p-1 bg-info">
-          <div class="h5 text-center">{{file.title}}</div>
+          <div class="h5 text-center text-uppercase">{{file.title}}</div>
           <input *ngIf="rol=='1'" type="text" class="form-control" placeholder="" [value]="file.title"
             (blur)="FriendUpdate1($event, file._id, file.description, file.blogspot, file.youtube, file.instagram, file.whatsapp, file.facebook )">
           <div *ngIf="rol=='1'" class="btn-group w-100">
@@ -310,7 +310,7 @@ New refresh
     <ng-container *ngFor="let file of ussser index as i">
       <div *ngIf="file.type=='videosconfidencial'" class="rounded p-1 col-md-6 col-lg-4 col-xl-4">
         <div class="border p-1">
-          <div class="h5 my-0 text-center">{{file.title}}</div>
+          <div class="h5 my-0 text-center text-uppercase">{{file.title}}</div>
           <input *ngIf="rol=='1'" type="text" class="form-control" placeholder="" [value]="file.title"
             (blur)="FriendUpdate1($event, file._id, file.description, file.blogspot, file.youtube, file.instagram, file.whatsapp, file.facebook )">
 
@@ -346,7 +346,7 @@ New refresh
     <ng-container *ngFor="let file of ussser index as i">
       <div *ngIf="file.type=='documentos'" class="rounded p-1 col-md-6 col-lg-4 col-xl-4">
         <div class="">
-          <div class="h5 text-center">{{file.title}}</div>
+          <div class="h5 text-center text-uppercase">{{file.title}}</div>
           <input *ngIf="rol=='1'" type="text" class="form-control" placeholder="" [value]="file.title"
           (blur)="FriendUpdate1($event, file._id, file.description, file.blogspot, file.youtube, file.instagram, file.whatsapp, file.facebook )">
           <div class="btn-group w-100">
@@ -382,7 +382,7 @@ New refresh
           <div class="p-1" [ngStyle]="{background:'rgba(210,210,210, 0.7)'}">
 
             <div class="">
-              <div class="h5 my-1 text-warning text-center">{{file.title}}</div>
+              <div class="h5 text-uppercase my-1 text-warning text-center">{{file.title}}</div>
               <input *ngIf="rol=='1'" type="text" class="form-control" placeholder="" [value]="file.title"
                 (blur)="FriendUpdate1($event, file._id, file.description, file.blogspot, file.youtube, file.instagram, file.whatsapp, file.facebook )">
               <div class="btn-group d-flex ">

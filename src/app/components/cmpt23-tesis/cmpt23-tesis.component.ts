@@ -84,7 +84,7 @@
       }
 
       ngOnInit(): void {
-        this.Tw.setTitle('Exposiciones NANCY VIZA');
+        this.Tw.setTitle('Exposiciones AEPA');
 
       this.router.params.subscribe(params => {
       console.log(localStorage.getItem('idcurso') || "" )
